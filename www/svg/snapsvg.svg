@@ -6,7 +6,7 @@
     
     
     //  http://www.h2.dion.ne.jp/~defghi/snapsvg/snapsvg.xhtml#section_22
-    
+    // http://svg.dabbles.info/snaptut-base
     
 var s = Snap('#snap');
 
