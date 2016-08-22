@@ -14,34 +14,71 @@
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
 
+<!--
+<script src="svg/bonsai-0.4.1.min.js"></script>
+<script src="svg/svg.min.js"></script>
+<script src="svg/svg.draggable.min.js"></script>
+-->
+
+<!--
+
+<script src="svg/snap.svg-min.js"></script>
+<script>
+// First, let's create our drawing surface out of an existing SVG element
+// If you want to create a new surface just provide dimensions
+// like 
+var s = Snap(800, 600);
+//var s = Snap("#svg");
+// Let's create a big circle in the middle:
+var bigCircle = s.circle(150, 150, 100);
+// By default it is black, let's change its attributes
+bigCircle.attr({
+    fill: "#bada55",
+    stroke: "#000",
+    strokeWidth: 5
+});
+
+</script>
+
+-->
+
     <script>
         ons.bootstrap()
           .controller('AppController', function($scope) {
             $scope.load = function(page) {
-              $scope.mySplitterContent.load(page)
+              $scope.mySplitterContent.load(page);
             }
             $scope.open = function() {
               $scope.mySplitterSide.open();
             }
+            $scope.close = function() {
+              $scope.mySplitterSide.close();
+            }
           });
         ons.ready(function() {
             console.log("Onsen UI is ready!");
+
+
+
         });
     </script>
 </head>
 <body ng-controller="AppController as app">
   <ons-splitter>
-    <ons-splitter-side var="mySplitterSide" side="left" width="30%" collapse="(max-width:640px)">
+    <ons-splitter-side var="mySplitterSide" side="left" width="120px" collapse="(max-width:640px)">
       <ons-page>
         <ons-list>
+          <ons-list-item ng-click="close()" tappable>
+            <i class="fa fa-bars fa-lg" style="color: #666"></i> &nbsp;
+          </ons-list-item>
           <ons-list-item ng-click="load('home.html')" tappable>
-            Home
+            <i class="fa fa-home fa-lg" style="color: #666"></i> &nbsp; ホーム
           </ons-list-item>
           <ons-list-item ng-click="load('settings.html')" tappable>
-            Settings
+            <i class="fa fa-gear fa-lg" style="color: #666"></i> &nbsp; 設定
           </ons-list-item>
           <ons-list-item ng-click="load('about.html')" tappable>
-            About
+            <i class="fa fa-info-circle fa-lg" style="color: #666"></i> &nbsp; about
           </ons-list-item>
         </ons-list>
       </ons-page>
@@ -53,17 +90,14 @@
     <ons-page>
       <ons-toolbar>
         <div class="left">
-          <ons-toolbar-button ng-click="open()">
-            <ons-icon icon="md-menu"></ons-icon>
+          <ons-toolbar-button ng-click="open()" ng-if="mySplitterSide.mode == 'collapse'">
+            <i class="fa fa-bars fa-lg" style="color: #666"></i> &nbsp;
           </ons-toolbar-button>
         </div>
         <div class="center">
           Main
         </div>
       </ons-toolbar>
-      <p style="text-align: center; opacity: 0.6; padding-top: 20px;">
-        Swipe right to open the menu!
-      </p>
     </ons-page>
   </ons-template>
 
@@ -72,28 +106,19 @@
       <ons-toolbar>
         <div class="left">
           <ons-toolbar-button ng-click="open()">
-            <ons-icon icon="md-menu"></ons-icon>
+            <i class="fa fa-bars fa-lg" style="color: #666"></i>
           </ons-toolbar-button>
         </div>
         <div class="center">
           Settings
         </div>
       </ons-toolbar>
-    </ons-page>
-  </ons-template>
-
-  <ons-template id="about.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button ng-click="open()">
-            <ons-icon icon="md-menu"></ons-icon>
-          </ons-toolbar-button>
-        </div>
-        <div class="center">
-          About
-        </div>
-      </ons-toolbar>
+      
+      test settings.
+      <div>
+<object type="image/svg+xml" data="svg/svgjs.svg" width="512" height="512"></object> 
+</div>
+    
     </ons-page>
   </ons-template>
 </body>
