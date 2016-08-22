@@ -1,10 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<svg id="drawing" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
-  <script type="text/javascript" xlink:href="svg.min.js"></script>
+<svg id="drawing" xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
+<!--
+<html:link rel="stylesheet" href="../lib/onsenui/css/font_awesome/css/font-awesome.css"/>
+-->
+<style><![CDATA[ @import url(../lib/onsenui/css/font_awesome/css/font-awesome.css); ]]></style>
+<script type="text/javascript" xlink:href="svg.min.js"></script>
+  <script type="text/javascript" xlink:href="svg.draggable.min.js"></script>
   <script type="text/javascript">
     <![CDATA[
-      var draw = SVG('drawing')
-      draw.rect(100,100).animate().fill('#f03').move(100,100)
+      var draw = SVG('drawing');
+      var rect = draw.rect(100,100);
+      rect.animate().fill('#f03');
+      
+ var text = draw.text('\uf040').attr({x:50, y:50 });
+
+text.font({
+          family: 'FontAwesome'
+        , size: 50
+        , anchor: 'middle'
+        , leading: 1
+        });   
+        
+        text.fill('#0f0');
+      
+      
+var group = draw.group();
+
+group.add(rect);
+group.add(text);
+
+group.move(100,100);      
+      
+      group.draggable();
+      
     ]]>
   </script>
 </svg>

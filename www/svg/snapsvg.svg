@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg id="snap" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
+  <script type="text/javascript" xlink:href="snap.svg-min.js"></script>
+  <script type="text/javascript">
+    <![CDATA[
+var s = Snap('#snap');
+
+// Lets create big circle in the middle:
+var bigCircle = s.circle(150, 150, 100);
+// By default its black, lets change its attributes
+bigCircle.attr({
+    fill: "#bada55",
+    stroke: "#000",
+    strokeWidth: 5
+});  
+
+
+// Writing text as simple as:
+var text = s.group(bigCircle,s.text(150, 150, "Snap.svg"));
+text.attr({
+    fill: "#fff"
+});
+
+
+]]>
+  </script>
+</svg>

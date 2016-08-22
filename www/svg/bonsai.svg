@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<svg id="movie" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" >
+  <script type="text/javascript" xlink:href="bonsai-0.4.1.min.js"></script>
+  <script type="text/javascript">
+    <![CDATA[
+  bonsai.run(document.getElementById('movie'), {
+    code: function() {
+      new Rect(10, 10, 100, 100)
+        .addTo(stage)
+        .attr('fillColor', 'green');
+    },
+    width: 500,
+    height: 400
+  });    
+  ]]>
+  </script>
+</svg>
