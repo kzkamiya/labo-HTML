@@ -3,6 +3,11 @@
   <script type="text/javascript" xlink:href="snap.svg-min.js"></script>
   <script type="text/javascript">
     <![CDATA[
+    
+    
+    //  http://www.h2.dion.ne.jp/~defghi/snapsvg/snapsvg.xhtml#section_22
+    
+    
 var s = Snap('#snap');
 
 // Lets create big circle in the middle:
@@ -16,11 +21,25 @@ bigCircle.attr({
 
 
 // Writing text as simple as:
-var text = s.group(bigCircle,s.text(150, 150, "Snap.svg"));
-text.attr({
+var group = s.group(bigCircle,s.text(150, 150, "Snap.svg"));
+group.attr({
     fill: "#fff"
 });
 
+var move = function(dx,dy) {
+        this.attr({
+                    transform: this.data('origTransform') + (this.data('origTransform') ? "T" : "t") + [dx, dy]
+                });
+}
+
+var start = function() {
+        this.data('origTransform', this.transform().local );
+}
+var stop = function() {
+        console.log('finished dragging');
+}
+
+group.drag(move, start, stop );
 
 ]]>
   </script>

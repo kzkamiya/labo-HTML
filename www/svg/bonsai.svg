@@ -3,6 +3,8 @@
   <script type="text/javascript" xlink:href="bonsai-0.4.1.min.js"></script>
   <script type="text/javascript">
     <![CDATA[
+    
+    // NG.... can't use.
   bonsai.run(document.getElementById('movie'), {
     code: function() {
       new Rect(10, 10, 100, 100)
