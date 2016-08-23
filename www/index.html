@@ -4,64 +4,41 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
-    <script src="components/loader.js"></script>
+
+<script src="components/loader.js"></script>
+
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/onsenui/js/onsenui.min.js"></script>
     <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
+    <script src="app.js"></script>
+
+      <script src='textAngular/textAngular-rangy.min.js'></script>
+    
+      <script src='textAngular/textAngular-sanitize.min.js'></script>
+    
+      <script src='textAngular/textAngular.min.js'></script>
 
     <link rel="stylesheet" href="components/loader.css">
-    <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+<link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
     <link rel="stylesheet" href="css/style.css">
 
-<!--
-<script src="svg/bonsai-0.4.1.min.js"></script>
-<script src="svg/svg.min.js"></script>
-<script src="svg/svg.draggable.min.js"></script>
--->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/onsenui/css/font_awesome/css/font-awesome.css">
 
-<!--
-
-<script src="svg/snap.svg-min.js"></script>
-<script>
-// First, let's create our drawing surface out of an existing SVG element
-// If you want to create a new surface just provide dimensions
-// like 
-var s = Snap(800, 600);
-//var s = Snap("#svg");
-// Let's create a big circle in the middle:
-var bigCircle = s.circle(150, 150, 100);
-// By default it is black, let's change its attributes
-bigCircle.attr({
-    fill: "#bada55",
-    stroke: "#000",
-    strokeWidth: 5
-});
-
-</script>
-
--->
-
-    <script>
-        ons.bootstrap()
-          .controller('AppController', function($scope) {
-            $scope.load = function(page) {
-              $scope.mySplitterContent.load(page);
-            }
-            $scope.open = function() {
-              $scope.mySplitterSide.open();
-            }
-            $scope.close = function() {
-              $scope.mySplitterSide.close();
-            }
-          });
-        ons.ready(function() {
-            console.log("Onsen UI is ready!");
-
-
-
-        });
-    </script>
+    <style>
+    .ta-editor {
+        min-height: 300px;
+        height: auto;
+        overflow: auto;
+        font-family: inherit;
+        font-size: 100%;
+    }
+    h1 small {
+        font-size: 60%;
+    }
+    </style>
+    
 </head>
 <body ng-controller="AppController as app">
   <ons-splitter>
@@ -85,32 +62,6 @@ bigCircle.attr({
     </ons-splitter-side>
     <ons-splitter-content var="mySplitterContent" page="home.html"></ons-splitter-content>
   </ons-splitter>
-
-  <ons-template id="home.html">
-    <ons-page>
-      <ons-toolbar>
-        <div class="left">
-          <ons-toolbar-button ng-click="open()" ng-if="mySplitterSide.mode == 'collapse'">
-            <i class="fa fa-bars fa-lg" style="color: #666"></i> &nbsp;
-          </ons-toolbar-button>
-        </div>
-        <div class="center">
-          Main
-        </div>
-      </ons-toolbar>
-
-test main.
-      <div>
-
-<object type="image/svg+xml" data="svg/snapsvg.svg" width="512" height="512"></object>
-
-<!--
-<object type="image/svg+xml" data="svg/bonsai.svg" width="512" height="512"></object> 
--->
-</div>
-
-</ons-page>
-  </ons-template>
 
   <ons-template id="settings.html">
     <ons-page>
