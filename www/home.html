@@ -9,6 +9,36 @@
           Main Page
         </div>
       </ons-toolbar>
+      
+<div>
+
+http://angularjs.jqueryrain.com/example/drag-drop/page/2/
+https://jasonturim.wordpress.com/2013/09/01/angularjs-drag-and-drop/
+http://logicbomb.github.io/ng-directives/drag-drop.html
+
+    	<h1>Drag and Drop Directives</h1>
+		<p>Simple directives to enable drag and drop in your application</p>
+
+		<div ng-controller="ddController" style="margin-top:50px;">
+			<div class="row">
+				<div class="col-md-1 col-md-offset-1">
+					<p>Click and drag a color onto the grid to the right</p>
+					<div class="peg green" x-lvl-draggable="true" data-color="green">Green</div>
+					<div class="peg red" x-lvl-draggable="true" data-color="red">Red</div>
+					<div class="peg blue" x-lvl-draggable="true" data-color="blue">Blue</div>
+					<div class="peg black" x-lvl-draggable="true" data-color="black">Black</div>
+					<div class="peg grey" x-lvl-draggable="true" data-color="grey">Grey</div>
+				</div>
+	
+				<div class="col-md-10">
+					<div ng-repeat="r in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+						<span class="slot" ng-repeat="c in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" x-lvl-draggable='true' x-lvl-drop-target="true" x-on-drop="dropped(dragEl, dropEl)"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+      
         <div style="padding:20px;">
 
         <ons-row >
@@ -31,38 +61,6 @@
        </ons-row>
     </div>
     
-<div>
-
-
-       <h1>Editor <small>{{version}}</small></h1>
-        <button ng-click="disabled = !disabled" unselectable>Disable text-angular Toggle</button>
-        <div text-angular="text-angular" name="htmlcontent" ng-model="htmlcontent" ta-disabled='disabled'></div>
-        <h1>Raw HTML in a text area</h1>
-        <textarea ng-model="htmlcontent" style="width: 100%"></textarea>
-        <h1>Bound with ng-bind-html</h1>
-        <div ng-bind-html="htmlcontent"></div>
-        <h1>Bound with ta-bind, our internal html-binding directive</h1>
-        <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
-        <button type="button" ng-click="htmlcontent = orightml">Reset</button>
-        <p>Note: although we support classes and styles, angularjs' ng-bind-html directive will strip out all style attributes.</p>
-        <h1>Option to masquerade as a fancy text-area - complete with form submission and optional ngModel</h1>
-        <text-angular name="htmlcontent" ng-model="htmlcontenttwo">
-            <p>Any <b>HTML</b> we put in-between the text-angular tags gets automatically put into the editor if there <strong style="font-size: 12pt;"><u><em>is not</em></u></strong> a value assigned to the ngModel.</p>
-            <p>If there is a value assigned to the ngModel, it replaces any html here. To see this, uncomment the line at the bottom of demo.html</p>
-        </text-angular>
-        <h1>Bound with ta-bind, our internal html-binding directive</h1>
-        <div ta-bind="text" ng-model="htmlcontenttwo" ta-readonly='disabled'></div>
-
-
-
-    <h4>テキストエリア3</h4>
-<textarea name="area1" id="area1" style="width: 300px; height: 100px;">
-    テキストエリアに <i>デフォルト</i> の HTML <b>コンテンツ</b> があります。
-</textarea>
-
-
-</div>
-
 
       <div>
 

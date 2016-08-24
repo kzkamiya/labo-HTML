@@ -1,50 +1,82 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="app">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
 
-<script src="components/loader.js"></script>
+    <script src="components/loader.js"></script>
 
-    <script src="lib/angular/angular.min.js"></script>
+<!--
+  <script src='jquery/jquery.js'></script>
+  <script>
+    jQuery.event.props.push('dataTransfer');
+  </script>
+-->
+
+
+<script src="lib/angular/angular.min.js"></script>
     <script src="lib/onsenui/js/onsenui.min.js"></script>
     <script src="lib/onsenui/js/angular-onsenui.min.js"></script>
-    <script src="app.js"></script>
+<script src="angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
 
-      <script src='textAngular/textAngular-rangy.min.js'></script>
-    
-      <script src='textAngular/textAngular-sanitize.min.js'></script>
-    
-      <script src='textAngular/textAngular.min.js'></script>
+<!--
+-->
 
-    <link rel="stylesheet" href="components/loader.css">
+<script src="app.js"></script>
+
+    <script src='textAngular/textAngular-rangy.min.js'></script>
+    <script src='textAngular/textAngular-sanitize.min.js'></script>
+    <script src='textAngular/textAngular.min.js'></script>
+
+    
+<!--
+<script src="lvl-drag-drop/lvl-uuid.js"></script>
+<script src="lvl-drag-drop/lvl-drag-drop.js"></script>    
+<script src="angular-sortable-view/angular-sortable-view.js"></script>
+-->
+
+
+
+<link rel="stylesheet" href="components/loader.css">
 <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-    <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
-    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+<link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="lib/onsenui/css/font_awesome/css/font-awesome.css">
 
-    <style>
-    .ta-editor {
-        min-height: 300px;
-        height: auto;
-        overflow: auto;
-        font-family: inherit;
-        font-size: 100%;
-    }
-    h1 small {
-        font-size: 60%;
-    }
-    </style>
-    
+        
 </head>
 <body ng-controller="AppController as app">
+
+
   <ons-splitter>
     <ons-splitter-side var="mySplitterSide" side="left" width="120px" collapse="(max-width:640px)">
       <ons-page>
-        <ons-list>
+
+<div>
+test2
+<!-- The dnd-list directive allows to drop elements into it.
+     The dropped data will be added to the referenced list -->
+<ul dnd-list="list">aaa
+    <!-- The dnd-draggable directive makes an element draggable and will
+         transfer the object that was assigned to it. If an element was
+         dragged away, you have to remove it from the original list
+         yourself using the dnd-moved attribute -->
+    <li ng-repeat="item in models.list"
+        dnd-draggable="item"
+        dnd-moved="list.splice($index, 1)"
+        dnd-effect-allowed="move"
+        dnd-selected="models.selected = item"
+        ng-class="{'selected': models.selected === item}"
+        >
+        {{item.label}}
+    </li>
+</ul>
+</div>
+
+<ons-list>
           <ons-list-item ng-click="close()" tappable>
             <i class="fa fa-bars fa-lg" style="color: #666"></i> &nbsp;
           </ons-list-item>
@@ -57,10 +89,13 @@
           <ons-list-item ng-click="load('about.html')" tappable>
             <i class="fa fa-info-circle fa-lg" style="color: #666"></i> &nbsp; about
           </ons-list-item>
+          <ons-list-item ng-click="load('textAngular.html')" tappable>
+            <i class="fa fa-info-circle fa-lg" style="color: #666"></i> &nbsp; textAngular
+          </ons-list-item>
         </ons-list>
       </ons-page>
     </ons-splitter-side>
-    <ons-splitter-content var="mySplitterContent" page="home.html"></ons-splitter-content>
+    <ons-splitter-content var="mySplitterContent" page="angular-drag-and-drop-lists.html"></ons-splitter-content>
   </ons-splitter>
 
   <ons-template id="settings.html">
